@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"> 
+  <head>
+    <title>UUPS</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" type="text/css" href="FlexStyle.css">
+    <link rel="stylesheet" type="text/css" href="ColorStyles.css">
+
+    <script src="DrawingClasses.js"></script>
+    <script src="canvas.js"></script>
+    <script src="EventHandler.js"></script>
+    <script src="CustomElements.js"></script>
+    <script src="ConfigureSliders.js"></script>
+    <script src="ConfigureCheckboxes.js"></script>
+    <script src="AdjustFontSizes.js"></script>
+    
+    <script src="ConstantInfusion_Description.js"></script>
+    <script src="ConstantInfusion_DefineContent.js"></script>
+    <script src="ConstantInfusion_Calculations.js"></script>
+
+    <script src="OralAdmin_DefineContent.js"></script>
+    <script src="OralAdmin_UpdateGraph.js"></script>
+    <script src="OralAdmin_ConfigureSliders.js"></script>
+    <script src="OralAdmin_Calculations.js"></script>
+    <script src="OralAdmin_ConfigureCheckboxes.js"></script>
+    <script src="OralAdmin_Description.js"></script>
+
+    <script src="TwoCompartment_DefineContent.js"></script>
+    <script src="TwoCompartment_ConfigureSliders.js"></script>
+    <script src="TwoCompartment_Calculations.js"></script>
+    <script src="TwoCompartment_UpdateGraph.js"></script>
+    <script src="TwoCompartment_ConfigureCheckboxes.js"></script>
+    <script src="TwoCompartment_Description.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <script>
+      MathJax = {
+          chtml: { displayAlign: 'left' }
+      };
+    </script>
+  </head>
+  
+  <body onresize="OnWindowResize()" onload="PageFinishedLoading()"> 
+    <div id="GridContainer">
+      <div id="MainTitlePanel">
+        <span id="MainTitleTextSpan">
+          Uppsala University Pharmacokinetics Simulator
+        </span> 
+      </div>
+
+      <section id="Sidebar" class="Container">
+        
+        <section id="SideButtons">
+          <div class="ButtonContainer" id="ConstantInfusionButton" onclick="OnSidebarButtonClick(this.id)">
+            <span>Constant<br>infusion</span>
+          </div>
+          
+          <div class="ButtonContainer" id="OralAdministrationButton" onclick="OnSidebarButtonClick(this.id)">
+            <span>Oral<br>administration</span>
+          </div>
+
+          <div class="ButtonContainer" id="TwoCompartmentButton" onclick="OnSidebarButtonClick(this.id)">
+            <span>Two<br>compartments</span>
+          </div>
+
+          <div class="ButtonContainer" id="AboutButton" onclick="OnSidebarButtonClick(this.id)">
+            <span>About</span>
+          </div>
+        </section>
+
+        <section id="SideLogo">
+          <a id="LogoWrapper" href="https://www.uu.se" target="_blank">
+            <img id="logo" src="uu-logo.svg" alt="UU logo"></img>
+          </a>
+        </section>
+        
+      </section>
+
+      <tab-panel id="TabPanel" class="Container"></tab-panel>
+
+      <section id = ContentContainer>
+        <constant-infusion-both></constant-infusion-both>
+      </section>
+    </div>
+  </body>
+</html>

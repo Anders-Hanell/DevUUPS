@@ -1,0 +1,350 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 1vh;
+    padding-left: 1vh;
+    padding-right: 1vh;
+}
+
+#GridContainer {
+    display: grid;
+    grid-template-columns: 10% 90%;
+    grid-template-rows: 10% 10% 80%;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+}
+
+#MainTitlePanel {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1vh;
+    white-space: nowrap;
+    font-size: 1px;
+}
+
+#logo {
+  width: 100%;
+}
+
+#LogoWrapper {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 1vh;
+}
+
+.Container {
+  border-radius: 10px;
+  margin-bottom: 1vh;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#Sidebar {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+    border-radius: 10px;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 80% 20%;
+
+    margin-right: 1vh;
+    margin-bottom: 1vh;
+    padding: 15px;
+    padding-bottom: 0px;
+}
+
+#SideButtons {
+  height: 100%;
+  width: 100%;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+#Sidebar .ButtonContainer {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 15px;
+  white-space: nowrap;
+  border-radius: 10px;
+  font-size: 1px;
+}
+
+#Sidebar span {
+    text-align: center;
+}
+
+#SideLogo {
+  height: 100%;
+  width: 100%;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+#TabPanel {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 1vh;
+    padding-right: 0px;
+}
+
+#TabPanel div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 10px;
+  text-align: center;
+  vertical-align: middle;
+  margin-right: 1vh;
+}
+
+#ContentContainer {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+constant-infusion-both {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+constant-infusion-graph {
+  height: 70%;
+  width: 100%;
+}
+
+oral-admin-both {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+oral-admin-graph {
+  height: 70%;
+  width: 100%;
+}
+
+two-compartment-both {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+two-compartment-graph {
+  height: 70%;
+  width: 100%;
+}
+
+#canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#ControlsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 30%;
+  width: 100%;
+  padding: 0px;
+  padding-top: 15px;
+  padding-left: 15px;
+}
+
+#ControlsContainer .ControlPanelColumn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: 15px;
+}
+
+#ControlsContainer .ControlPanelColumn slider-container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 50% 25% 25%;
+  gap: 0;
+  padding: 0px 5px;
+  border-radius: 5px;
+  background-color: #555;
+  margin-bottom: 15px;
+}
+
+slider-container .SliderMainLabel {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  white-space: nowrap;
+  font-size: 1px;
+}
+
+slider-container .SliderMainLabel span {
+  white-space: nowrap;
+}
+
+slider-container .InputRangeContainer {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+slider-container .SliderValueContainer {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+slider-container .SliderValueContainer p {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 2px;
+}
+
+slider-container .SliderValueContainer .SliderMinLabel {
+  align-items: flex-start;
+}
+
+slider-container .SliderValueContainer .SliderValueLabel {
+  align-items: center;
+}
+
+slider-container .SliderValueContainer .SliderMaxLabel {
+  align-items: flex-end;
+}
+
+slider-container .SliderValueContainer p span {
+  white-space: nowrap;
+}
+
+slider-container p {
+  color: white;
+  white-space: nowrap;
+}
+
+.my-slider {
+  width: 100%;
+  height: 2px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #d3d3d3;
+  border-radius: 5px;
+  outline: none;
+}
+
+.my-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: blue;
+  cursor: pointer;
+  border-radius: 50%;
+  width: var(--sliderSize);
+  height: var(--sliderSize);
+}
+
+checkbox-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-bottom: 15px;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: #555;
+  align-items: center;
+  color: white;
+  font-size: 1px;
+}
+
+checkbox-container input {
+  width: 8px;
+  height: 8px;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+checkbox-container p {
+  width: 100%;
+  height: 100%;
+  font-size: 1px;
+  display: inline;
+  white-space: nowrap;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+#DescriptionContainer {
+  width: 100%;
+  size: 100%;
+  display: inline;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.MathParagraph {
+  text-align: left;
+}
+
+.MathJax_Display {
+  text-align: left !important;
+}

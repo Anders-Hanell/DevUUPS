@@ -1,0 +1,45 @@
+body {
+  background-color: #e5e5e5;
+}
+
+#MainTitlePanel {
+  background-color: #1f2920;
+}
+
+.Container {
+  background-color: #1f2920;
+}
+
+.ButtonContainer {
+  background-color: #428bca;
+  color: white;
+}
+
+#DescriptionContainer {
+  color: white;
+  background-color: #1f2920;
+}
+
+.MathJax {
+  color: coral;
+}
+
+#ConstantInfusion_DisplayPlasmaConcentrationCheckbox p {
+  color: #428bca;
+}
+
+#ConstantInfusion_DisplayInfusionRateCheckbox p {
+  color: #bd2b30;
+}
+
+#ConstantInfusion_DisplayEliminationRateCheckbox p {
+  color: #3f9762;
+}
+
+#ConstantInfusion_DisplayHalflifeMarkerCheckbox p {
+  color: #fd9228;
+}
+
+#ConstantInfusion_DisplayTherapeuticWindowCheckbox p {
+  color: #fd9228;
+}/*# sourceMappingURL=ColorStyles.css.map */
