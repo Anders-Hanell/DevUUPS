@@ -1,69 +1,102 @@
-function OralAdmin_CalculateValues(dailyDose, tabletsPerDay, dissolveTime, bioavailability) {
-  tabletsPerDay = tabletsPerDay * 1.0;
+function OralAdmin_CalculateValues(
+    TabletStrength,
+    TabletsPerAdmin,
+    AdminsPerDay,
+    TabletDissolveTime,
+    Bioavailability,
+    Clearance)
+{
+  
+  TabletStrength = TabletStrength * 1.0;
+  TabletsPerAdmin = TabletsPerAdmin * 1.0;
+  AdminsPerDay = AdminsPerDay * 1.0;
+  TabletDissolveTime = TabletDissolveTime * 1.0;
+  Bioavailability = Bioavailability * 1.0;
+  Clearance = Clearance * 1.0;
+
+  const tabletsPerDay = TabletsPerAdmin * AdminsPerDay * 1.0;
+  const dosePerAdmin = TabletStrength * TabletsPerAdmin;
+
+  let dissolveTime = TabletDissolveTime;
+
+  const bioavailability = Bioavailability;
+
+  const clearance = Clearance;
+
 
   const Vd = 70;
 
-  halflife = 50;
-  // var fiveHalfLifes = 5 * halflife;
-  var clearance = Vd * Math.log(2) / halflife;
-
-  const numTimepoints = 1000.0;
   
+  //var clearance = Vd * Math.log(2) / halflife;
+
+  
+
   const numSimulatedDays = 20.0;
+  
+  const numTimepoints = numSimulatedDays * 24 * 60;
 
-  const dissolveDuration = Math.round(numTimepoints / numSimulatedDays * dissolveTime / 24);
-  const tabletDose = dailyDose / tabletsPerDay;
-  const tabletRadius = 1;
-  const totalVolume = 4 / 3 * Math.PI * Math.pow(tabletRadius, 3);
-  var releaseProfile = [];
-  for (i = 0; i < dissolveDuration; i++) {
-    const startRadius = (dissolveDuration - i) / dissolveDuration;
-    const endRadius = (dissolveDuration - i - 1) / dissolveDuration;
+  const numTimepointsPerDay = numTimepoints / numSimulatedDays;
+  const numHoursPerDay = 24.0;
+
+  const dissolveDurationTimepoints = Math.round(numTimepointsPerDay * dissolveTime / numHoursPerDay);
+
+  const tabletRadius = 1.0;
+  const totalVolume = 4.0 / 3.0 * Math.PI * Math.pow(tabletRadius, 3.0);
+  var releaseProfileForSingleAdmin = [];
+  for (i = 0; i < dissolveDurationTimepoints; i++) {
+    const startRadius = (dissolveDurationTimepoints - i) / dissolveDurationTimepoints;
+    const endRadius = (dissolveDurationTimepoints - i - 1) / dissolveDurationTimepoints;
     
-    const startVolume = 4 / 3 * Math.PI * Math.pow(startRadius, 3);
-    const endVolume = 4 / 3 * Math.PI * Math.pow(endRadius, 3);
+    const startVolume = 4.0 / 3.0 * Math.PI * Math.pow(startRadius, 3.0);
+    const endVolume = 4.0 / 3.0 * Math.PI * Math.pow(endRadius, 3.0);
 
-    const substanceReleased = tabletDose * (startVolume - endVolume) / totalVolume;
+    const substanceReleased = dosePerAdmin * (startVolume - endVolume) / totalVolume;
 
-    releaseProfile.push(substanceReleased);
+    releaseProfileForSingleAdmin.push(substanceReleased);
   }
 
   var releaseRate = [];
   for (i = 0; i < numTimepoints; i++) {
-    releaseRate.push(0);
+    releaseRate.push(0.0);
   }
 
-  dayDuration = numTimepoints / numSimulatedDays;
-  for (day = 0; day < numSimulatedDays; day++) {
-    const dayStart = day * numTimepoints / numSimulatedDays;
-    for (tablet = 0; tablet < tabletsPerDay; tablet++) {
-      const tabletStart = Math.round(dayStart + tablet * dayDuration / tabletsPerDay);
-      for (dissolveTime = 0; dissolveTime < dissolveDuration; dissolveTime++) {
-        const timepoint = tabletStart + dissolveTime;
+  const totalNumAdmins = AdminsPerDay * numSimulatedDays;
+  const adminDuration = 1.0 * numTimepoints / totalNumAdmins;
+
+  for (admin = 0; admin < totalNumAdmins; admin++) {
+    const adminStart = Math.round(admin * adminDuration);
+      for (dissolveTime = 0; dissolveTime < dissolveDurationTimepoints; dissolveTime++) {
+        const timepoint = adminStart + dissolveTime;
         if (timepoint < numTimepoints) {
-          releaseRate[timepoint] += releaseProfile[dissolveTime];
+          releaseRate[timepoint] += releaseProfileForSingleAdmin[dissolveTime];
         }
       }
-    }
   }
 
   var absorbtionRate = [];
   for (i = 0; i < numTimepoints; i++) {
-    absorbtionRate.push(releaseRate[i] * bioavailability / 100);
+    absorbtionRate.push(releaseRate[i] * bioavailability / 100.0);
   }
 
-  var currentConc = 0
+  var currentConc = 0.0
   var plasmaConc = [];
-  plasmaConc.push(0);
+  plasmaConc.push(0.0);
   var prevConc = currentConc;
 
   var elimRate = [];
-  elimRate.push(0);
+  elimRate.push(0.0);
+
+  const minutesPerDay = 60.0 * 24.0;
+  var minutesPerTimepoint = (numSimulatedDays * minutesPerDay) / numTimepoints;
+
+  //minutesPerTimepoint = 1.0;
 
   for (i = 0; i < numTimepoints - 1; i++) {
-    var currentElim = clearance / Vd * prevConc;
+    var currentElim = minutesPerTimepoint * prevConc * clearance / (Vd * 1000.0);
     var currentConc = prevConc + absorbtionRate[i] - currentElim;
     
+    currentConc = Math.max(0.0, currentConc);
+
     plasmaConc.push(currentConc);
     elimRate.push(currentElim);
 

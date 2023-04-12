@@ -8,15 +8,19 @@ function OralAdmin_UpdateGraph() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   var calculatedValues = OralAdmin_CalculateValues(
-    OralAdmin_DailyDoseSliderSliderValue,
-    OralAdmin_TabletsPerDaySliderValue,
+    OralAdmin_TabletStrengthSliderValue,
+    OralAdmin_TabletsPerAdminSliderValue,
+    OralAdmin_AdminsPerDaySliderValue,
     OralAdmin_TabletDissolveTimeSliderValue,
-    OralAdmin_BioavailabilitySliderValue
+    OralAdmin_BioavailabilitySliderValue,
+    OralAdmin_ClearanceSliderValue
   );
   
   var plasmaConc = calculatedValues[0];
   var releaseRate = calculatedValues[1];
   var absorbtionRate = calculatedValues[2];
+  
+  const numDataPoints = plasmaConc.length;
 
   const plasmaConcColor = "#428bca";
   const releaseRateColor = "#bd2b30";
@@ -116,22 +120,22 @@ function OralAdmin_UpdateGraph() {
   const absorbtionRateAxis = new RightYAxis("Absorbtion rate (mg/hour)", absorbtionAxisRegion, absorbtionAxisTickValues, absRateColor, false);
 
   var yPos = [];
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < numDataPoints; i++) {
     yPos.push(plasmaConc[i] * plotRegion.height / 1000.0);
   }
 
   var timeValues = [];
-  for (let i = 0.0; i < 1000.0; i++) {
-    timeValues.push(i * plotRegion.width / 1000.0);
+  for (let i = 0.0; i < numDataPoints; i++) {
+    timeValues.push(i * plotRegion.width / numDataPoints);
   }
   
   var releaseRateYpos = [];
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < numDataPoints; i++) {
     releaseRateYpos.push(releaseRate[i] * plotRegion.height / 100.0);
   }
 
   var absorbtionRateYpos = [];
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < numDataPoints; i++) {
     absorbtionRateYpos.push(absorbtionRate[i] * plotRegion.height / 100.0);
   }
 
@@ -156,7 +160,7 @@ function OralAdmin_UpdateGraph() {
     
     ctx.beginPath();
     ctx.moveTo(plotRegion.left, plotRegion.bottom);
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < numDataPoints; i++) {
       ctx.lineTo(plotRegion.left + timeValues[i], plotRegion.bottom - yPos[i]);
     }
     ctx.stroke();
@@ -169,7 +173,7 @@ function OralAdmin_UpdateGraph() {
     
     ctx.beginPath();
     ctx.moveTo(plotRegion.left, plotRegion.bottom - releaseRateYpos[0]);
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < numDataPoints; i++) {
       ctx.lineTo(plotRegion.left + timeValues[i], plotRegion.bottom - releaseRateYpos[i]);
     }
     ctx.stroke();
@@ -182,7 +186,7 @@ function OralAdmin_UpdateGraph() {
     
     ctx.beginPath();
     ctx.moveTo(plotRegion.left, plotRegion.bottom - absorbtionRateYpos[0]);
-    for (let i = 0; i < 1000; i++) {
+    for (let i = 0; i < numDataPoints; i++) {
       ctx.lineTo(plotRegion.left + timeValues[i], plotRegion.bottom - absorbtionRateYpos[i]);
     }
     ctx.stroke();

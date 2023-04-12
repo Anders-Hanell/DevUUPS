@@ -30,12 +30,16 @@ class OralAdmin_Controls extends HTMLElement {
     this.id = "ControlsContainer";
     this.innerHTML = `
     <div class="ControlPanelColumn">
-      <slider-container id="OralAdmin_DailyDoseSlider"></slider-container>
-      <slider-container id="OralAdmin_TabletsPerDaySlider"></slider-container>
+      <slider-container id="OralAdmin_TabletStrengthSlider"></slider-container>
+      <slider-container id="OralAdmin_TabletsPerAdminSlider"></slider-container>
     </div>
     <div class="ControlPanelColumn">
+      <slider-container id="OralAdmin_AdminsPerDaySlider"></slider-container>
       <slider-container id="OralAdmin_TabletDissolveTimeSlider"></slider-container>
+    </div>
+    <div class="ControlPanelColumn">
       <slider-container id="OralAdmin_BioavailabilitySlider"></slider-container>
+      <slider-container id="OralAdmin_ClearanceSlider"></slider-container>
     </div>
     <div class="ControlPanelColumn">
       <checkbox-container id = "OralAdmin_DisplayPlasmaConcentrationCheckbox"></checkbox-container>
@@ -44,11 +48,14 @@ class OralAdmin_Controls extends HTMLElement {
     </div>
     `;
 
-    ConfigureOralAdmin_DailyDoseSlider();
-    ConfigureOralAdmin_TabletsPerDaySlider();
+    ConfigureOralAdmin_TabletStrengthSlider();
+    ConfigureOralAdmin_TabletsPerAdminSlider();
 
+    ConfigureOralAdmin_AdminsPerDaySlider();
     ConfigureOralAdmin_TabletDissolveTimeSlider();
+
     ConfigureOralAdmin_BioavailabilitySlider();
+    ConfigureOralAdmin_ClearanceSlider();
 
     ConfigureOralAdmin_DisplayPlasmaConcentrationCheckbox();
     ConfigureOralAdmin_DisplayReleaseRateCheckbox();
