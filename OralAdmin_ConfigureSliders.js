@@ -3,7 +3,7 @@ var OralAdmin_TabletsPerAdminSliderValue = 2;
 var OralAdmin_AdminsPerDaySliderValue = 2;
 var OralAdmin_TabletDissolveTimeSliderValue = 4;
 var OralAdmin_BioavailabilitySliderValue = 50;
-var OralAdmin_ClearanceSliderValue = 50;
+var OralAdmin_ClearanceSliderValue = 60;
 
 function ConfigureOralAdmin_TabletStrengthSlider() {
   const container = document.getElementById('OralAdmin_TabletStrengthSlider');
@@ -45,10 +45,10 @@ function ConfigureOralAdmin_TabletsPerAdminSlider() {
   mainLabelSpan.innerText = "Tablets per administration";
   minLabelSpan.innerText = "1";
   valueLabelSpan.innerText = OralAdmin_TabletsPerAdminSliderValue;
-  maxLabelSpan.innerText = "5";
+  maxLabelSpan.innerText = "4";
 
   slider.min = "1";
-  slider.max = "5";
+  slider.max = "4";
   slider.step = "1";
   slider.value = OralAdmin_TabletsPerAdminSliderValue;
 }
@@ -69,10 +69,10 @@ function ConfigureOralAdmin_AdminsPerDaySlider() {
   mainLabelSpan.innerText = "Administrations per day";
   minLabelSpan.innerText = "1";
   valueLabelSpan.innerText = OralAdmin_AdminsPerDaySliderValue;
-  maxLabelSpan.innerText = "6";
+  maxLabelSpan.innerText = "4";
 
   slider.min = "1";
-  slider.max = "6";
+  slider.max = "4";
   slider.step = "1";
   slider.value = OralAdmin_AdminsPerDaySliderValue;
 }

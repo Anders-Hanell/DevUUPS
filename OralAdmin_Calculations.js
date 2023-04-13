@@ -23,13 +23,9 @@ function OralAdmin_CalculateValues(
 
   const clearance = Clearance;
 
-
   const Vd = 70;
 
-  
   //var clearance = Vd * Math.log(2) / halflife;
-
-  
 
   const numSimulatedDays = 20.0;
   
@@ -88,8 +84,6 @@ function OralAdmin_CalculateValues(
 
   const minutesPerDay = 60.0 * 24.0;
   var minutesPerTimepoint = (numSimulatedDays * minutesPerDay) / numTimepoints;
-
-  //minutesPerTimepoint = 1.0;
 
   for (i = 0; i < numTimepoints - 1; i++) {
     var currentElim = minutesPerTimepoint * prevConc * clearance / (Vd * 1000.0);
