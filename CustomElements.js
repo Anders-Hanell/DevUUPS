@@ -31,6 +31,22 @@ class CheckboxContainer extends HTMLElement {
 }
 customElements.define('checkbox-container', CheckboxContainer);
 
+class RadioButtonContainer extends HTMLElement {
+  constructor() {
+    super();
+  }
+
+  connectedCallback() {
+    this.innerHTML = `
+        <input type="radio" name='AdminType' id="ButtonA" oninput="OnRadioButtonChange('A')" checked>
+        <p><span id="LabelA">Oral</span></p>
+        <input type="radio" name='AdminType' id="ButtonB" oninput="OnRadioButtonChange('B')">
+        <p><span id="LabelB">IV</span></p>
+        `;
+  }
+}
+customElements.define('radio-button-container', RadioButtonContainer);
+
 class TabPanel extends HTMLElement {
   constructor() { super(); }
 

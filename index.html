@@ -14,8 +14,17 @@
     <script src="CustomElements.js"></script>
     <script src="ConfigureSliders.js"></script>
     <script src="ConfigureCheckboxes.js"></script>
+    <script src="ConfigureRadioButtons.js"></script>
     <script src="AdjustFontSizes.js"></script>
+    <script src="HelperFunctions.js"></script>
     
+    <script src="SingleDose_DefineContent.js"></script>
+    <script src="SingleDose_UpdateGraph.js"></script>
+    <script src="SingleDose_ConfigureSliders.js"></script>
+    <script src="SingleDose_ConfigureCheckboxes.js"></script>
+    <script src="SingleDose_Calculations.js"></script>
+    <script src="SingleDose_Description.js"></script>
+
     <script src="ConstantInfusion_Description.js"></script>
     <script src="ConstantInfusion_DefineContent.js"></script>
     <script src="ConstantInfusion_Calculations.js"></script>
@@ -55,6 +64,10 @@
       <section id="Sidebar" class="Container">
         
         <section id="SideButtons">
+          <div class="ButtonContainer" id="SingleDoseButton" onclick="OnSidebarButtonClick(this.id)">
+            <span>Single<br>dose</span>
+          </div>
+
           <div class="ButtonContainer" id="ConstantInfusionButton" onclick="OnSidebarButtonClick(this.id)">
             <span>Constant<br>infusion</span>
           </div>
@@ -83,7 +96,7 @@
       <tab-panel id="TabPanel" class="Container"></tab-panel>
 
       <section id = ContentContainer>
-        <constant-infusion-both></constant-infusion-both>
+        <single-dose-both></single-dose-both>
       </section>
     </div>
   </body>

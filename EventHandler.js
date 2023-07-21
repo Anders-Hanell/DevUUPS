@@ -1,7 +1,8 @@
 var NavigationIsVisible = true;
 var FullScreenIsActive = false;
 
-var CurrentModel = "ConstantInfusion";
+var CurrentModel = "SingleDose";
+var SingleDose_AdminTypeSelection = "Oral";
 
 function PageFinishedLoading() {
   let bodyHeight = screen.availHeight - (window.outerHeight - window.innerHeight);
@@ -19,7 +20,10 @@ function PageFinishedLoading() {
   UpdateCheckboxFontSizes();
   UpdateCheckboxSize();
 
-  UpdateGraph();
+  UpdateRadioButtonFontSizes();
+  UpdateRadioButtonSize();
+
+  SingleDose_UpdateGraph();
 
   document.addEventListener('fullscreenchange', FullScreenModeChanged, false);
 }
@@ -44,6 +48,7 @@ function AdjustFontSize(containerId, maxWidthPercent, maxHeightPercent) {
 }
 
 function AdjustButtonTextSize() {
+  AdjustFontSize("SingleDoseButton", 0.80, 0.60);
   AdjustFontSize("ConstantInfusionButton", 0.80, 0.60);
   AdjustFontSize("OralAdministrationButton", 0.80, 0.60);
   AdjustFontSize("TwoCompartmentButton", 0.80, 0.60);
@@ -78,6 +83,25 @@ function CurrentModeIsFullScreen() {
 function OnSidebarButtonClick(buttonId) {
   const conentContainer = document.getElementById("ContentContainer");
   
+  if (buttonId == "SingleDoseButton") {
+    CurrentModel = "SingleDose";
+    
+    conentContainer.innerHTML = "<single-dose-both></single-dose-both>";
+    
+    AdjustButtonTextSize();
+  
+    UpdateSliderSize();
+    UpdateSliderFontSizes();
+
+    UpdateCheckboxFontSizes();
+    UpdateCheckboxSize();
+    
+    UpdateRadioButtonFontSizes();
+    UpdateRadioButtonSize();
+
+    SingleDose_UpdateGraph();
+  }
+
   if (buttonId == "ConstantInfusionButton") {
     CurrentModel = "ConstantInfusion";
     
@@ -217,6 +241,12 @@ function OnGraphButtonClick() {
   
   let container = document.getElementById("ContentContainer");
   
+  if (CurrentModel == "SingleDose") {
+    container.innerHTML = "<single-dose-graph></single-dose-graph>"
+    container.firstChild.style.height = "100%";
+    SingleDose_UpdateGraph();
+  }
+
   if (CurrentModel == "ConstantInfusion") {
     container.innerHTML = "<constant-infusion-graph></constant-infusion-graph>"
     container.firstChild.style.height = "100%";
@@ -241,6 +271,10 @@ function OnControlsButtonClick() {
   
   let container = document.getElementById("ContentContainer");
   
+  if (CurrentModel == "SingleDose") {
+    container.innerHTML = "<single-dose-controls></single-dose-controls>";
+  }
+
   if (CurrentModel == "ConstantInfusion") {
     container.innerHTML = "<constant-infusion-controls></constant-infusion-controls>";
   }
@@ -265,6 +299,11 @@ function OnBothButtonClick() {
   CurrentTab = "Both";
 
   let container = document.getElementById("ContentContainer");
+
+  if (CurrentModel == "SingleDose") {
+    container.innerHTML = "<single-dose-both></single-dose-both>";
+    SingleDose_UpdateGraph();
+  }
 
   if (CurrentModel == "ConstantInfusion") {
     container.innerHTML = "<constant-infusion-both></constant-infusion-both>";
@@ -292,6 +331,10 @@ function OnDescriptionButtonClick() {
   
   let container = document.getElementById("ContentContainer");
   
+  if (CurrentModel == "SingleDose") {
+    container.innerHTML = "<single-dose-description></single-dose-description>"
+  }
+
   if (CurrentModel == "ConstantInfusion") {
     container.innerHTML = "<constant-infusion-description></constant-infusion-description>"
   }
@@ -306,6 +349,10 @@ function OnDescriptionButtonClick() {
 }
 
 function OnCheckboxChange() {
+  if (CurrentModel == "SingleDose") {
+    SingleDose_OnCheckboxChange();
+  }
+  
   if (CurrentModel == "ConstantInfusion") {
     ConstantInfusion_OnCheckboxChange();
   }
@@ -317,4 +364,15 @@ function OnCheckboxChange() {
   if (CurrentModel == "TwoCompartment") {
     TwoCompartment_OnCheckboxChange();
   }
+}
+
+function OnRadioButtonChange(buttonId) {
+  if (buttonId == "A"){
+    SingleDose_AdminTypeSelection = "Oral";
+  }
+  else if (buttonId == "B"){
+    SingleDose_AdminTypeSelection = "IV";
+  }
+
+  SingleDose_UpdateGraph();
 }

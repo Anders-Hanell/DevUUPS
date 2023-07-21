@@ -135,6 +135,19 @@ body {
   height: 100%;
 }
 
+single-dose-both {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+single-dose-graph {
+  height: 70%;
+  width: 100%;
+}
+
 constant-infusion-both {
   width: 100%;
   height: 100%;
@@ -331,6 +344,39 @@ checkbox-container p {
   display: flex;
   justify-content: left;
   align-items: center;
+}
+
+radio-button-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin-bottom: 15px;
+  padding: 2px;
+  border-radius: 5px;
+  background-color: #555;
+  align-items: center;
+  color: white;
+  font-size: 1px;
+}
+
+radio-button-container p {
+  width: 100%;
+  height: 100%;
+  font-size: 1px;
+  display: inline;
+  white-space: nowrap;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+radio-button-container input {
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  margin-right: 10px;
 }
 
 #DescriptionContainer {

@@ -2,6 +2,10 @@ function OnNewSliderValue() {
   UpdateSliderValueLabels();
   
   if (CurrentTab == "Both") {
+    if (CurrentModel == "SingleDose") {
+      SingleDose_UpdateGraph();
+    }
+    
     if (CurrentModel == "ConstantInfusion") {
       UpdateGraph();
     }

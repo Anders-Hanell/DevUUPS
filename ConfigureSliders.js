@@ -100,6 +100,10 @@ function ConfigureConstantInfusion_InfusionTimeSlider() {
 }
 
 function UpdateSliderValueLabels() {
+  if (CurrentModel == "SingleDose") {
+    UpdateSingleDoseSliderValueLabels();
+  }
+  
   if (CurrentModel == "ConstantInfusion") {
     UpdateConstantInfusionSliderValueLabels();
   }  
