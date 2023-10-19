@@ -2,26 +2,34 @@ function OnNewSliderValue() {
   UpdateSliderValueLabels();
   
   if (CurrentTab == "Both") {
-    if (CurrentModel == "SingleDose") {
-      SingleDose_UpdateGraph();
-    }
-    
-    if (CurrentModel == "ConstantInfusion") {
-      ConstantInfusion_UpdateGraph();
-    }
-    
-    if (CurrentModel == "OralAdmin") {
-      OralAdmin_UpdateGraph();
-    }
-
-    if (CurrentModel == "TwoCompartment") {
-      TwoCompartment_UpdateGraph();
-    }
+    UpdateCurrentGraph();
   }
 }
 
 function OnCanvasResize() {
-  ConstantInfusion_UpdateGraph();
+  UpdateCurrentGraph();
+}
+
+function UpdateCurrentGraph() {
+  if (CurrentTab == "Controls") {
+    return;
+  }
+  
+  if (CurrentModel == "SingleDose") {
+    SingleDose_UpdateGraph();
+  }
+  
+  if (CurrentModel == "ConstantInfusion") {
+    ConstantInfusion_UpdateGraph();
+  }
+  
+  if (CurrentModel == "OralAdmin") {
+    OralAdmin_UpdateGraph();
+  }
+
+  if (CurrentModel == "TwoCompartment") {
+    TwoCompartment_UpdateGraph();
+  }
 }
 
 function DetermineCanvasFont(canvasContext, availableWidth, availableHeight, longestString) {
