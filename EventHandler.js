@@ -115,7 +115,7 @@ function OnSidebarButtonClick(buttonId) {
     UpdateCheckboxFontSizes();
     UpdateCheckboxSize();
     
-    UpdateGraph();
+    ConstantInfusion_UpdateGraph();
   }
 
   if (buttonId == "OralAdministrationButton") {
@@ -250,7 +250,7 @@ function OnGraphButtonClick() {
   if (CurrentModel == "ConstantInfusion") {
     container.innerHTML = "<constant-infusion-graph></constant-infusion-graph>"
     container.firstChild.style.height = "100%";
-    UpdateGraph();
+    ConstantInfusion_UpdateGraph();
   }
 
   if (CurrentModel == "OralAdmin") {
@@ -307,7 +307,7 @@ function OnBothButtonClick() {
 
   if (CurrentModel == "ConstantInfusion") {
     container.innerHTML = "<constant-infusion-both></constant-infusion-both>";
-    UpdateGraph();
+    ConstantInfusion_UpdateGraph();
   }
 
   if (CurrentModel == "OralAdmin") {
@@ -367,10 +367,10 @@ function OnCheckboxChange() {
 }
 
 function OnRadioButtonChange(buttonId) {
-  if (buttonId == "A"){
+  if (buttonId == "A") {
     SingleDose_AdminTypeSelection = "Oral";
   }
-  else if (buttonId == "B"){
+  else if (buttonId == "B") {
     SingleDose_AdminTypeSelection = "IV";
   }
 
