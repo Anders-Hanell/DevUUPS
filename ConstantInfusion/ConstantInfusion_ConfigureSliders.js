@@ -1,5 +1,5 @@
 var ConstantInfusion_BolusDoseSliderValue = 0;
-var ConstantInfusion_InfusionRateSliderValue = 75;
+var ConstantInfusion_InfusionRateSliderValue = 500;
 var ConstantInfusion_HalflifeSliderValue = 65;
 var ConstantInfusion_InfusionTimeSliderValue = 750;
 
@@ -19,11 +19,11 @@ function ConfigureConstantInfusion_BolusDoseSlider() {
   mainLabelSpan.innerText = "Bolus dose (mg)";
   minLabelSpan.innerText = "0";
   valueLabelSpan.innerText = ConstantInfusion_BolusDoseSliderValue;
-  maxLabelSpan.innerText = "10000";
+  maxLabelSpan.innerText = "100";
 
   slider.min = "0";
-  slider.max = "10000";
-  slider.step = "10";
+  slider.max = "100";
+  slider.step = "1";
   slider.value = ConstantInfusion_BolusDoseSliderValue;
 }
 
@@ -40,13 +40,13 @@ function ConfigureConstantInfusion_InfusionRateSlider() {
   const valueLabelSpan = valueLabel.querySelector('span');
   const maxLabelSpan = maxLabel.querySelector('span');
 
-  mainLabelSpan.innerText = "Infusion rate (mg/min)";
+  mainLabelSpan.innerText = "Infusion rate (µg/min)";
   minLabelSpan.innerText = "0";
   valueLabelSpan.innerText = ConstantInfusion_InfusionRateSliderValue;
-  maxLabelSpan.innerText = "100";
+  maxLabelSpan.innerText = "1000";
 
   slider.min = "0";
-  slider.max = "100";
+  slider.max = "1000";
   slider.step = "1";
   slider.value = ConstantInfusion_InfusionRateSliderValue;
 }
@@ -88,7 +88,7 @@ function ConfigureConstantInfusion_InfusionTimeSlider() {
   const valueLabelSpan = valueLabel.querySelector('span');
   const maxLabelSpan = maxLabel.querySelector('span');
 
-  mainLabelSpan.innerText = "Infusion time (min)";
+  mainLabelSpan.innerText = "Infusion duration (min)";
   minLabelSpan.innerText = "0";
   valueLabelSpan.innerText = ConstantInfusion_InfusionTimeSliderValue;
   maxLabelSpan.innerText = "1000";

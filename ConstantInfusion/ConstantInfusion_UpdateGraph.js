@@ -14,10 +14,10 @@ function ConstantInfusion_UpdateGraph() {
   var fiveHalfLifes = calculatedValues[3];
   var clearanceLevels = calculatedValues[4];
 
-  let theraLowerConc = 6000;
-  let theraUpperConc = 8000;
-  let theraLowerPosition = theraLowerConc / 10000;
-  let theraUpperPosition = theraUpperConc / 10000;
+  let theraLowerConc = 600;
+  let theraUpperConc = 800;
+  let theraLowerPosition = theraLowerConc / 1000;
+  let theraUpperPosition = theraUpperConc / 1000;
 
   const plasmaConcColor = "#428bca";
   const infRateColor = "#bd2b30";
@@ -114,35 +114,35 @@ function ConstantInfusion_UpdateGraph() {
   const tickMarkLabelFont = canvasFonts[1];
   
   const drawSettings = new DrawSettings(axisLabelFont, tickMarkLabelFont, 2);
-
-  const plasmaConcAxisTickValues = new Array(0, 2500, 5000, 7500, 10000);
-  const leftYxis = new LeftYAxis("Plasma concentration (mg/ml)", leftYAxisRegion, plasmaConcAxisTickValues, plasmaConcColor, false);
+  
+  const plasmaConcAxisTickValues = new Array(0, 250, 500, 750, 1000);
+  const leftYxis = new LeftYAxis("Plasma concentration (µg/L)", leftYAxisRegion, plasmaConcAxisTickValues, plasmaConcColor, false);
 
   const timeAxisLabels = new Array(0, 250, 500, 750, 1000);
   const xAxis = new XAxis("Time (minutes)", xAxisRegion, timeAxisLabels, "white");
 
-  const infusionAxisTickValues = new Array(0, 25, 50, 75, 100);
-  const infusionAxis = new RightYAxis("Infusion rate (mg/min)", infusionAxisRegion, infusionAxisTickValues, infRateColor, false);
+  const infusionAxisTickValues = new Array(0, 250, 500, 750, 1000);
+  const infusionAxis = new RightYAxis("Infusion rate (µg/min)", infusionAxisRegion, infusionAxisTickValues, infRateColor, false);
 
   const elimAxisTickValues = infusionAxisTickValues;
-  const eliminationAxis = new RightYAxis("Elimination rate (mg/min)", eliminationAxisRegion, elimAxisTickValues, elimRateColor, false);
+  const eliminationAxis = new RightYAxis("Elimination rate (µg/min)", eliminationAxisRegion, elimAxisTickValues, elimRateColor, false);
 
   const clearanceAxisTickValues = new Array(0, 1, 2, 3, 4, 5);
   const clearanceAxis = new RightYAxis("Clearance (ml/min)", clearanceAxisRegion, clearanceAxisTickValues, "white", false);
 
   var yPos = [];
   for (let i = 0; i < 1000; i++) {
-    yPos.push(plasmaConc[i] * plotRegion.height / 10000.0);
+    yPos.push(plasmaConc[i] * plotRegion.height / 1000.0);
   }
 
   var elimYpos = [];
   for (let i = 0; i < 1000; i++) {
-    elimYpos.push(elimRate[i] * plotRegion.height / 100.0);
+    elimYpos.push(elimRate[i] * plotRegion.height / 1000.0);
   }
 
   var infYpos = [];
   for (let i = 0; i < 1000; i++) {
-    infYpos.push(infSpeed[i] * plotRegion.height / 100.0);
+    infYpos.push(infSpeed[i] * plotRegion.height / 1000.0);
   }
 
   var timeValues = [];
