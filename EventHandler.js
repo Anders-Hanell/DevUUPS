@@ -83,6 +83,7 @@ function OnSidebarButtonClick(buttonId) {
   
   if (buttonId == "SingleDoseButton") {
     CurrentModel = "SingleDose";
+    SingleDose_AdminTypeSelection = "Oral";
     
     conentContainer.innerHTML = "<single-dose-both></single-dose-both>";
     

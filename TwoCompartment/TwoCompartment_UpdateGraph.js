@@ -190,9 +190,7 @@ function TwoCompartment_UpdateGraph() {
     ctx.beginPath();
     ctx.moveTo(plotRegion.left, plotRegion.bottom);
     for (let i = 0; i < 1000; i++) {
-      if (yPos[i] <= plotRegion.height){
-        ctx.lineTo(plotRegion.left + timeValues[i], plotRegion.bottom - yPos[i]);
-      }
+      ctx.lineTo(plotRegion.left + timeValues[i], plotRegion.bottom - yPos[i]);
     }
     ctx.stroke();
   }
@@ -212,8 +210,6 @@ function TwoCompartment_UpdateGraph() {
   ctx.restore();
 
   // Peripheral concentration axis
-   
-
   if (TwoCompartment_LogPeripheralConcentration) {
     logPeripheralConcAxis.drawAxis(ctx, drawSettings, tickSize);
   }
@@ -230,9 +226,7 @@ function TwoCompartment_UpdateGraph() {
     ctx.beginPath();
     ctx.moveTo(plotRegion.left, plotRegion.bottom);
     for (let i = 0; i < 1000; i++) {
-      if (peripheralConcYpos[i] <= plotRegion.height){
-        ctx.lineTo(plotRegion.left + timeValues[i], plotRegion.bottom - peripheralConcYpos[i]);
-      }
+      ctx.lineTo(plotRegion.left + timeValues[i], plotRegion.bottom - peripheralConcYpos[i]);
     }
     ctx.stroke();
   }
@@ -244,9 +238,7 @@ function TwoCompartment_UpdateGraph() {
     ctx.beginPath();
     ctx.moveTo(plotRegion.left, plotRegion.bottom);
     for (let i = 0; i < 1000; i++) {
-      if (logPeripheralConcPosition[i] <= plotRegion.height){
-        ctx.lineTo(plotRegion.left + timeValues[i], plotRegion.bottom - logPeripheralConcPosition[i]);
-      }
+      ctx.lineTo(plotRegion.left + timeValues[i], plotRegion.bottom - logPeripheralConcPosition[i]);
     }
     ctx.stroke();
   }
