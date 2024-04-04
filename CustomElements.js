@@ -71,11 +71,7 @@ class TabPanel extends HTMLElement {
     <div class="ButtonContainer" id="ToggleNavigationButton" onclick="ToggleNavigation()">
       <span>Hide navigation</span>
     </div>
-
-    <div class="ButtonContainer" id="ToggleFullScreenButton" onclick="ToggleFullScreen()">
-      <span>Display full screen</span>
-    </div>
-        `;
+    `;
   }
 }
 customElements.define('tab-panel', TabPanel);

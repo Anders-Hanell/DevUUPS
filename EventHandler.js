@@ -9,8 +9,6 @@ function PageFinishedLoading() {
   AdjustButtonTextSize();
   
   UpdateUserInterfaceComponents();
-
-  document.addEventListener('fullscreenchange', FullScreenModeChanged, false);
 }
 
 function UpdateUserInterfaceComponents() {
@@ -57,13 +55,13 @@ function AdjustButtonTextSize() {
   AdjustFontSize("BothButton", 0.80, 0.60);
   AdjustFontSize("DescriptionButton", 0.80, 0.60);
   AdjustFontSize("ToggleNavigationButton", 0.80, 0.60);
-  AdjustFontSize("ToggleFullScreenButton", 0.80, 0.60);
 }
 
 function OnWindowResize() {
-  if (CurrentModeIsFullScreen() != FullScreenIsActive) {
-    FullScreenModeChanged();
-  }
+  AdjustFontSize("MainTitlePanel", 0.95, 0.60);
+  AdjustButtonTextSize();
+  
+  UpdateUserInterfaceComponents();
 }
 
 function CurrentModeIsFullScreen() {
@@ -166,42 +164,7 @@ function ShowNavigation() {
   sidebar.style.display = "flex";
 }
 
-function ToggleFullScreen() {
-  if (FullScreenIsActive) {
-    if (document.exitFullscreen) {
-			document.exitFullscreen();
-		} else if (document.webkitExitFullscreen) {
-			document.webkitExitFullscreen();
-		} else if (document.mozCancelFullScreen) {
-			document.mozCancelFullScreen();
-		} else if (document.msExitFullscreen) {
-			document.msExitFullscreen();
-		}
-  } else {
-    if (document.body.requestFullscreen) {
-      document.body.requestFullscreen().catch((err) => {
-        alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
-      });
-    } else if (document.body.webkitRequestFullscreen) {
-      document.body.webkitRequestFullscreen();
-    } else if (document.body.msRequestFullscreen) {
-      document.body.msRequestFullscreen();
-    }
-  }
-}
-
 function FullScreenModeChanged() {
-  const toggleButton = document.getElementById("ToggleFullScreenButton");
-
-  if (CurrentModeIsFullScreen()) {
-    toggleButton.textContent = "Leave full screen";
-    FullScreenIsActive = true;
-  } 
-  else {
-    toggleButton.textContent = "Display full screen";
-    FullScreenIsActive = false;
-  }
-
   UpdateCurrentGraph();
 }
 
