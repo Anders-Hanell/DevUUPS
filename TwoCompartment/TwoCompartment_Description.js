@@ -10,8 +10,6 @@ class TwoCompartment_Description extends HTMLElement {
 
     Elimination of the drug is also considered to take place exclusively from the central compartment.
     `;
-
-    MathJax.typeset();
   }
 }
 customElements.define('two-compartment-description', TwoCompartment_Description);

@@ -1,17 +1,17 @@
 function UpdateSliderValueLabels() {
-  if (CurrentModel == "SingleDose") {
+  if (GlobalState.CurrentPage == "SingleDose") {
     UpdateSingleDoseSliderValueLabels();
   }
   
-  if (CurrentModel == "ConstantInfusion") {
+  if (GlobalState.CurrentPage == "ConstantInfusion") {
     UpdateConstantInfusionSliderValueLabels();
   }  
 
-  if (CurrentModel == "OralAdmin") {
+  if (GlobalState.CurrentPage == "OralAdmin") {
     UpdateOralAdminSliderValueLabels();
   } 
 
-  if (CurrentModel == "TwoCompartment") {
+  if (GlobalState.CurrentPage == "TwoCompartment") {
     UpdateTwoCompartmentSliderValueLabels();
   } 
 }
@@ -21,12 +21,12 @@ function UpdateSliderFontSizes() {
 
   for (var i = 0; i<sliderContainers.length; i++) {
     const mainLabel = sliderContainers[i].querySelector('.SliderMainLabel');
-    AdjustFontSizeForContainer(mainLabel, 0.95, 0.60);
+    UpdateUI.AdjustFontSizeForContainer(mainLabel, 0.95, 0.60);
 
     const valueLabelsContainer = sliderContainers[i].querySelector('.SliderValueContainer');
     const valueLabels = valueLabelsContainer.querySelectorAll('p');
     for (var j = 0; j<valueLabels.length; j++) {
-      AdjustFontSizeForContainer(valueLabels[j], 0.95, 0.50);
+      UpdateUI.AdjustFontSizeForContainer(valueLabels[j], 0.95, 0.50);
     }
   }
 }

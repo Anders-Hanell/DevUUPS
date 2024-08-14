@@ -42,7 +42,7 @@ function OralAdmin_OnCheckboxChange() {
   checkbox = container.querySelector('input');
   OralAdmin_DisplayAbsorbtionRate = checkbox.checked;
 
-  if (CurrentTab == "Both") {
+  if (GlobalState.CurrentTab == "Both") {
     OralAdmin_UpdateGraph();
   }
 }

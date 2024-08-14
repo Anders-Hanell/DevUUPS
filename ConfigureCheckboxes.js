@@ -4,7 +4,7 @@ function UpdateCheckboxFontSizes() {
   for (var i = 0; i<checkboxContainers.length; i++) {
     const checkbox = checkboxContainers[i];
     const label = checkbox.querySelector('p');
-    AdjustFontSizeForContainer(label, 0.95, 0.70);
+    UpdateUI.AdjustFontSizeForContainer(label, 0.95, 0.70);
   }
 }
 

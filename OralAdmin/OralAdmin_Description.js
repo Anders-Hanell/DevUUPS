@@ -17,8 +17,6 @@ class OralAdmin_Description extends HTMLElement {
     <br><br>
     The entire body except for the gastro-intestinal tract is treated as a single compartment.
     `;
-
-    MathJax.typeset();
   }
 }
 customElements.define('oral-admin-description', OralAdmin_Description);

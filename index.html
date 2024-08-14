@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()">
 
-    <link rel="stylesheet" type="text/css" href="FlexStyle.css">
     <link rel="stylesheet" type="text/css" href="ColorStyles.css">
+    <link rel="stylesheet" type="text/css" href="FlexStyle.css">
 
     <script src="DrawingClasses.js"></script>
     <script src="CustomCanvas.js"></script>
@@ -16,9 +16,16 @@
     <script src="ConfigureSliders.js"></script>
     <script src="ConfigureCheckboxes.js"></script>
     <script src="ConfigureRadioButtons.js"></script>
-    <script src="AdjustFontSizes.js"></script>
     <script src="HelperFunctions.js"></script>
     <script src="GlobalState.js"></script>
+    <script src="LeftSideBar.js"></script>
+    <script src="SidebarButtonController.js"></script>
+    <script src="NavigationButton.js"></script>
+    <script src="HtmlDiv.js"></script>
+    <script src="HtmlTextSpan.js"></script>
+    <script src="ColorDefinitions.js"></script>
+    <script src="ColorAssignments.js"></script>
+    <script src="UpdateUI.js"></script>
     
     <script src="./SingleDose/SingleDose_DefineContent.js"></script>
     <script src="./SingleDose/SingleDose_UpdateGraph.js"></script>
@@ -47,19 +54,10 @@
     <script src="./TwoCompartment/TwoCompartment_UpdateGraph.js"></script>
     <script src="./TwoCompartment/TwoCompartment_ConfigureCheckboxes.js"></script>
     <script src="./TwoCompartment/TwoCompartment_Description.js"></script>
-
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <script>
-      MathJax = {
-          chtml: { displayAlign: 'left' }
-      };
-    </script>
   </head>
   
   <body onresize="OnWindowResize()" onload="PageFinishedLoading()"> 
-    <div id="GridContainer">
+    <div id="MainContainer">
       <div id="MainTitlePanel">
         <span id="MainTitleTextSpan">
           Uppsala University Pharmacokinetics Simulator
@@ -67,35 +65,13 @@
       </div>
 
       <section id="Sidebar" class="Container">
-        
-        <section id="SideButtons">
-          <div class="ButtonContainer" id="SingleDoseButton" onclick="OnSidebarButtonClick(this.id)">
-            <span>Single<br>dose</span>
-          </div>
-
-          <div class="ButtonContainer" id="ConstantInfusionButton" onclick="OnSidebarButtonClick(this.id)">
-            <span>Constant<br>infusion</span>
-          </div>
-          
-          <div class="ButtonContainer" id="OralAdministrationButton" onclick="OnSidebarButtonClick(this.id)">
-            <span>Oral<br>administration</span>
-          </div>
-
-          <div class="ButtonContainer" id="TwoCompartmentButton" onclick="OnSidebarButtonClick(this.id)">
-            <span>Two<br>compartments</span>
-          </div>
-
-          <div class="ButtonContainer" id="AboutButton" onclick="OnSidebarButtonClick(this.id)">
-            <span>About</span>
-          </div>
-        </section>
+        <section id="SideButtons"> </section>
 
         <section id="SideLogo">
           <a id="LogoWrapper" href="https://www.uu.se" target="_blank">
             <img id="logo" src="uu-logo.svg" alt="UU logo"></img>
           </a>
         </section>
-        
       </section>
 
       <tab-panel id="TabPanel" class="Container"></tab-panel>

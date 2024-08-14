@@ -1,33 +1,29 @@
 function OnNewSliderValue() {
   UpdateSliderValueLabels();
   
-  if (CurrentTab == "Both") {
+  if (GlobalState.CurrentTab == "Both") {
     UpdateCurrentGraph();
   }
 }
 
-function OnCanvasResize() {
-  UpdateCurrentGraph();
-}
-
 function UpdateCurrentGraph() {
-  if (CurrentTab == "Controls") {
+  if (GlobalState.CurrentTab == "Controls") {
     return;
   }
   
-  if (CurrentModel == "SingleDose") {
+  if (GlobalState.CurrentPage == "SingleDose") {
     SingleDose_UpdateGraph();
   }
   
-  if (CurrentModel == "ConstantInfusion") {
+  if (GlobalState.CurrentPage == "ConstantInfusion") {
     ConstantInfusion_UpdateGraph();
   }
   
-  if (CurrentModel == "OralAdmin") {
+  if (GlobalState.CurrentPage == "OralAdmin") {
     OralAdmin_UpdateGraph();
   }
 
-  if (CurrentModel == "TwoCompartment") {
+  if (GlobalState.CurrentPage == "TwoCompartment") {
     TwoCompartment_UpdateGraph();
   }
 }

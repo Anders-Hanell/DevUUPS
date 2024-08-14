@@ -56,7 +56,7 @@ function TwoCompartment_OnCheckboxChange() {
   checkbox = container.querySelector('input');
   TwoCompartment_LogPeripheralConcentration = checkbox.checked;
   
-  if (CurrentTab == "Both") {
+  if (GlobalState.CurrentTab == "Both") {
     TwoCompartment_UpdateGraph();
   }
 }

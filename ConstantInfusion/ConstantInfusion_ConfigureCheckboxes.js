@@ -84,7 +84,7 @@ function ConstantInfusion_OnCheckboxChange() {
   checkbox = container.querySelector('input');
   ConstantInfusion_DisplayTherapeuticWindow = checkbox.checked;
 
-  if (CurrentTab == "Both") {
+  if (GlobalState.CurrentTab == "Both") {
     ConstantInfusion_UpdateGraph();
   }
 }

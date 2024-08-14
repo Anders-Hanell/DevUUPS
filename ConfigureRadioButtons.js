@@ -4,7 +4,7 @@ function UpdateRadioButtonFontSizes() {
   for (var i = 0; i<radioButtonContainers.length; i++) {
     const buttonLabels = radioButtonContainers[i].querySelectorAll('p');
     for (var j = 0; j<buttonLabels.length; j++) {
-      AdjustFontSizeForContainer(buttonLabels[j], 0.95, 0.50);
+      UpdateUI.AdjustFontSizeForContainer(buttonLabels[j], 0.95, 0.50);
     }
   }
 }

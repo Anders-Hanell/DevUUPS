@@ -84,7 +84,7 @@ function SingleDose_OnCheckboxChange() {
   checkbox = container.querySelector('input');
   SingleDose_DisplayAuc = checkbox.checked;
 
-  if (CurrentTab == "Both") {
+  if (GlobalState.CurrentTab == "Both") {
     SingleDose_UpdateGraph();
   }
 }

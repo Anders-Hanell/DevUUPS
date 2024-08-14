@@ -14,7 +14,7 @@ const Vd_liter = 70;
 
 let clearance_liter_per_min = Vd_liter * Math.log(2) / halflife_minutes;
 
-if (SingleDose_AdminTypeSelection == "IV") {
+if (GlobalState.SingleDose_AdminTypeSelection == "IV") {
   return SingleDose_CalculateValuesForIV(dose_mg, Vd_liter, clearance_liter_per_min);
 }
 

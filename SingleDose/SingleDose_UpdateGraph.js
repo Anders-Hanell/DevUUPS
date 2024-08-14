@@ -244,7 +244,7 @@ function SingleDose_UpdateGraph() {
   }
 
   // Absorbtion rate
-  if (SingleDose_DisplayAbsorbtionRate && SingleDose_AdminTypeSelection == "Oral") {
+  if (SingleDose_DisplayAbsorbtionRate && GlobalState.SingleDose_AdminTypeSelection == "Oral") {
     ctx.strokeStyle = absorbtionRateColor;
     ctx.fillStyle = absorbtionRateColor;
     

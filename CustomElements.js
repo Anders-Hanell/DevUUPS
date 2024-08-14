@@ -37,12 +37,21 @@ class RadioButtonContainer extends HTMLElement {
   }
 
   connectedCallback() {
-    this.innerHTML = `
-        <input type="radio" name='AdminType' id="ButtonA" oninput="OnRadioButtonChange('A')" checked>
+    if (GlobalState.SingleDose_AdminTypeSelection == "Oral") {
+      this.innerHTML = `
+          <input type="radio" name='AdminType' id="ButtonA" oninput="OnRadioButtonChange('A')" checked>
+          <p><span id="LabelA">Oral</span></p>
+          <input type="radio" name='AdminType' id="ButtonB" oninput="OnRadioButtonChange('B')">
+          <p><span id="LabelB">IV</span></p>
+          `;
+    } else {
+      this.innerHTML = `
+        <input type="radio" name='AdminType' id="ButtonA" oninput="OnRadioButtonChange('A')">
         <p><span id="LabelA">Oral</span></p>
-        <input type="radio" name='AdminType' id="ButtonB" oninput="OnRadioButtonChange('B')">
+        <input type="radio" name='AdminType' id="ButtonB" oninput="OnRadioButtonChange('B')" checked>
         <p><span id="LabelB">IV</span></p>
         `;
+    }
   }
 }
 customElements.define('radio-button-container', RadioButtonContainer);
@@ -69,7 +78,7 @@ class TabPanel extends HTMLElement {
     </div>
     
     <div class="ButtonContainer" id="ToggleNavigationButton" onclick="ToggleNavigation()">
-      <span>Hide navigation</span>
+      <span>Toggle navigation</span>
     </div>
     `;
   }
